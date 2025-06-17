@@ -38,6 +38,8 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
     # JWT Secret Key
     JWT_SECRET=your_jwt_secret
     ```
+    Start MongoDB: Make sure you have access to a MongoDB instance (local or Atlas).
+   
 ## Usage
 
 1. Start the server:
@@ -55,7 +57,7 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
 
 ## References
 
-Here is a list of all the endpoints and their respective methods. You can test these directly by issuing the requests.
+Here is a list of all the endpoints and their respective methods. You can access endpoints using tools like Postman or curl.
 
 | Endpoint | Method | Parameters | Description |
 | :------: | :----: | :--------- | :---------- |
