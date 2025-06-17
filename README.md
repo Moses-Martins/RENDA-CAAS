@@ -55,7 +55,7 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
 
 ## References
 
-go-purple exposes multiple API endpoints by defult, mainly used for authentication and testing purposes. Here is a list of all the endpoints and their respective methods. You can test these directly by issuing the requests in `tests/*.http` files.
+Here is a list of all the endpoints and their respective methods. You can test these directly by issuing the requests.
 
 | Endpoint | Method | Parameters | Description |
 | :------: | :----: | :--------- | :---------- |
