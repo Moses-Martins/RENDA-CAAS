@@ -1,0 +1,13 @@
+# Binaries
+*.exe
+*.out
+*.test
+*.bin
+
+# OS files
+.DS_Store
+
+# Go stuff
+vendor/
+*.log
+.env
