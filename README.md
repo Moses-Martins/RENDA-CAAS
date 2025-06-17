@@ -6,8 +6,8 @@
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Environment Variables](#environment-variables)
-- [Examples](#examples)
-- [Contributing](CONTRIBUTING.md)
+- [Endpoints](#endpoints)
+- [Structure](Structure.md)
 - [License](LICENSE)
 ## Getting Started
 
@@ -56,7 +56,7 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
 
 
 
-## References
+## Endpoints
 
 Here is a list of all the endpoints and their respective methods. You can access endpoints using tools like Postman or curl.
 
