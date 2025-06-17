@@ -1,23 +1,20 @@
 ```ini
 ├── config
-│   └── db.go                # Database connection and configuration
+│   └── db.go                # Database connection logic
 ├── controllers
-│   ├── auth.go              # Authentication and authorization handlers
-│   └── dashboard.go         # Handlers for product dashboards
+│   ├── auth.go              # Authentication and user privilege handlers
+│   └── dashboard.go         # Product dashboard handler
 ├── middleware
 │   └── auth.go              # Middleware for JWT and role checks
 ├── models
-│   ├── user.go              # User model and related structs
-│   └── privilege.go         # Structs for privilege/role updates
+│   ├── user.go              # User model
+│   └── privilege.go         # Privilege update request struct
 ├── public                   # Static files (if any)
-├── routes
-│   └── routes.go            # Route registration (optional, if modularized)
-├── tests
-│   └── ...                  # Test files for your handlers and logic
-├── .env.example             # Example environment variables file
+├── .env.example             # Example environment variables
 ├── .gitignore               # Git ignore file
 ├── go.mod                   # Go module file
 ├── go.sum                   # Go dependencies checksum
+├── LICENSE  
 ├── main.go                  # Application entry point
 └── README.md                # Project documentation
 ```
