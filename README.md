@@ -59,18 +59,6 @@ go-purple exposes multiple API endpoints by defult, mainly used for authenticati
 
 | Endpoint | Method | Parameters | Description |
 | :------: | :----: | :--------- | :---------- |
-| / | GET | | Static binding for files in `public` |
-| /api/v1/auth/login | POST | username, password | Attempts to authenticate a user. If successful, it returns a web token |
-| /api/v1/auth/logout | POST | | Invalidates the current session |
-| /api/v1/auth/register | POST | username, password, email | Attempts to create a new user. The provided username **must** be unique |
-| /api/v1/users | GET | | Returns a list of all users. Authorization is required to access this endpoint |
-| /api/v1/users/`:user` | GET | | Returns a specific user. Authorization is required to access this endpoint |
-
-
-
-
-| Endpoint | Method | Parameters | Description |
-| :------: | :----: | :--------- | :---------- |
 | /renda360/register |	POST | name, email, password | Register a user for Renda360 (user gets Viewer on others) |
 | /scale/register | POST | name, email, password | Register a user for Scale (user gets Viewer on others) |
 | /horizon/register | POST | name, email, password | Register a user for Horizon (user gets Viewer on others) |
