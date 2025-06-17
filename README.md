@@ -31,6 +31,7 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
     ```properties
     # MongoDB Configuration
     MONGODB_URI=mongodb+srv://..............
+    MONGO_DB=my_database
    
     # Server Configuration
     PORT=8080 
