@@ -63,20 +63,20 @@ Here is a list of all the endpoints and their respective methods. You can access
 
 | Endpoint | Method | Parameters | Description |
 | :------: | :----: | :--------- | :---------- |
-| /renda360/register |	POST | name, email, password | Register a user for Renda360 (User becomes a Viewer on other products) |
-| /scale/register | POST | name, email, password | Register a user for Scale (User becomes a Viewer on other products) |
-| /horizon/register | POST | name, email, password | Register a user for Horizon (User becomes a Viewer on other products) |
-| /login | POST | email, password | Authenticates a user and returns a JWT token |
-| /me |	GET | JWT token (header) | Returns user info and product access details |
-| /dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
-| /admin/update-privilege | POST | email, product, role, JWT token | Superadmin or product admin updates a user's role for a product |
+| /v1/renda360/register |	POST | name, email, password | Register a user for Renda360 (User becomes a Viewer on other products) |
+| /v1/scale/register | POST | name, email, password | Register a user for Scale (User becomes a Viewer on other products) |
+| /v1/horizon/register | POST | name, email, password | Register a user for Horizon (User becomes a Viewer on other products) |
+| /v1/login | POST | email, password | Authenticates a user and returns a JWT token |
+| /v1/me |	GET | JWT token (header) | Returns user info and product access details |
+| /v1/dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
+| /v1/admin/update-privilege | POST | email, product, role, JWT token | Superadmin or product admin updates a user's role for a product |
 
 
 ## Examples
 
 <details> <summary><strong>Register a user (Renda360)</strong></summary>
 
-POST `/renda360/register`
+POST `/v1/renda360/register`
 
 ```json
 {
@@ -88,7 +88,7 @@ POST `/renda360/register`
 
 </details> <details> <summary><strong>Register a user (Scale)</strong></summary>
 
-POST `/scale/register`
+POST `/v1/scale/register`
 
 ```json
 {
@@ -99,7 +99,7 @@ POST `/scale/register`
 ```
 </details> <details> <summary><strong>Register a user (Horizon)</strong></summary>
 
-POST `/horizon/register`
+POST `/v1/horizon/register`
 ```json
 {
   "name": "Alice Johnson",
@@ -109,7 +109,7 @@ POST `/horizon/register`
 ```
 </details> <details> <summary><strong>Login</strong></summary>
 
-POST `/login`
+POST `/v1/login`
 ```json
 {
   "email": "jane@example.com",
@@ -124,7 +124,7 @@ POST `/login`
 ```
 </details> <details> <summary><strong>Get User Info</strong></summary>
 
-GET `/me`
+GET `/v1/me`
 
 Headers:
 
@@ -132,7 +132,7 @@ Headers:
 
 </details> <details> <summary><strong>Product Dashboard</strong></summary>
 
-GET `/dashboard/renda360` (or scale, horizon)
+GET `/v1/dashboard/renda360` (or scale, horizon)
 
 Headers:
 
@@ -140,7 +140,7 @@ Headers:
 
 </details> <details> <summary><strong>Update User Privilege</strong></summary>
 
-PUT `/admin/update-privilege`
+PUT `/v1/admin/update-privilege`
 
 Headers:
 
