@@ -19,6 +19,10 @@ var validProducts = map[string]string{
 	"horizon":  "Horizon",
 }
 
+/*
+AdminOrUserForProduct is middleware that allows only Admin, User, or SuperAdmin
+to access a product dashboard. It checks the user's role for the product.
+*/
 func AdminOrUserForProduct(userCollection *mongo.Collection) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {

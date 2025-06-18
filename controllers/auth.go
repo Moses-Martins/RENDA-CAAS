@@ -25,6 +25,7 @@ func InitUserCollection() {
 	UserCollection = config.DB.Collection("users")
 }
 
+// registerForProduct is a helper to register a user for a specific product.
 func registerForProduct(w http.ResponseWriter, r *http.Request, mainProduct string) {
 	var input models.User
 	if err := json.NewDecoder(r.Body).Decode(&input); err != nil {
@@ -64,6 +65,7 @@ func registerForProduct(w http.ResponseWriter, r *http.Request, mainProduct stri
 	json.NewEncoder(w).Encode(map[string]string{"message": "User registered successfully"})
 }
 
+// Login authenticates a user and returns a JWT token with user info and roles.
 func Login(w http.ResponseWriter, r *http.Request) {
 	var input models.User
 	var user models.User
@@ -169,6 +171,7 @@ func updatePrivilege(user *models.User, product, role string) {
 	}
 }
 
+// Me returns the current user's info and product access details from the JWT token.
 func Me(w http.ResponseWriter, r *http.Request) {
 	tokenString := r.Header.Get("Authorization")
 	tokenString = strings.TrimPrefix(tokenString, "Bearer ")
@@ -221,6 +224,7 @@ func getUserFromToken(r *http.Request) (*models.User, error) {
 	return &user, nil
 }
 
+// RegisterRenda360 handles registration for Renda360 product.
 func RegisterRenda360(w http.ResponseWriter, r *http.Request) {
 	registerForProduct(w, r, "renda360")
 }

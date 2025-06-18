@@ -11,8 +11,13 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
+// DB is the global MongoDB client instance.
 var DB *mongo.Database
 
+/*
+ConnectDB initializes the MongoDB connection using environment variables.
+It sets up the global DB variable for use throughout the application.
+*/
 func ConnectDB() {
 	err := godotenv.Load()
 	if err != nil {

@@ -7,6 +7,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
+/*
+ProductDashboard handles requests to the product dashboard.
+Only users with "Admin", "User", or "SuperAdmin" roles for the product can access.
+*/
 func ProductDashboard(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	product := vars["product"]
