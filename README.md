@@ -62,9 +62,9 @@ Here is a list of all the endpoints and their respective methods. You can access
 
 | Endpoint | Method | Parameters | Description |
 | :------: | :----: | :--------- | :---------- |
-| /renda360/register |	POST | name, email, password | Register a user for Renda360 (user gets Viewer on others) |
-| /scale/register | POST | name, email, password | Register a user for Scale (user gets Viewer on others) |
-| /horizon/register | POST | name, email, password | Register a user for Horizon (user gets Viewer on others) |
+| /renda360/register |	POST | name, email, password | Register a user for Renda360 (User becomes a Viewer on other products) |
+| /scale/register | POST | name, email, password | Register a user for Scale (User becomes a Viewer on other products) |
+| /horizon/register | POST | name, email, password | Register a user for Horizon (User becomes a Viewer on other products) |
 | /login | POST | email, password | Authenticates a user and returns a JWT token |
 | /me |	GET | JWT token (header) | Returns user info and product access details |
 | /dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
