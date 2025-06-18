@@ -21,7 +21,7 @@ func main() {
 	r.HandleFunc("/v1/horizon/register", controllers.RegisterHorizon).Methods("POST")
 	r.HandleFunc("/v1/login", controllers.Login).Methods("POST")
 	r.HandleFunc("/v1/admin/update-privilege", controllers.UpdateUserPrivilege).Methods("PUT")
-	r.Handle("/dashboard/{product}", middleware.AdminOrUserForProduct(controllers.UserCollection)(http.HandlerFunc(controllers.ProductDashboard))).Methods("GET")
+	r.Handle("/v1/dashboard/{product}", middleware.AdminOrUserForProduct(controllers.UserCollection)(http.HandlerFunc(controllers.ProductDashboard))).Methods("GET")
 
 	log.Println("Server running on :8080")
 	log.Fatal(http.ListenAndServe(":8080", r))
