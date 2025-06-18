@@ -75,7 +75,9 @@ Here is a list of all the endpoints and their respective methods. You can access
 ## Examples
 
 <details> <summary><strong>Register a user (Renda360)</strong></summary>
+
 POST `/renda360/register`
+
 ```json
 {
   "name": "Jane Doe",
@@ -87,6 +89,7 @@ POST `/renda360/register`
 </details> <details> <summary><strong>Register a user (Scale)</strong></summary>
 
 POST `/scale/register`
+
 ```json
 {
   "name": "John Smith",
