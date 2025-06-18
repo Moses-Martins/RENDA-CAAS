@@ -128,7 +128,7 @@ GET `/me`
 
 Headers:
 
-Authorization: Bearer <JWT_TOKEN>
+`Authorization`: Bearer <JWT_TOKEN>
 
 </details> <details> <summary><strong>Product Dashboard</strong></summary>
 
@@ -136,7 +136,7 @@ GET `/dashboard/renda360` (or scale, horizon)
 
 Headers:
 
-Authorization: Bearer <JWT_TOKEN>
+`Authorization`: Bearer <JWT_TOKEN>
 
 </details> <details> <summary><strong>Update User Privilege</strong></summary>
 
@@ -144,7 +144,7 @@ POST `/admin/update-privilege`
 
 Headers:
 
-Authorization: Bearer <JWT_TOKEN>
+`Authorization`: Bearer <JWT_TOKEN>
 
 Body:
 ```json
