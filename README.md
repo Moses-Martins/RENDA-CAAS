@@ -74,52 +74,54 @@ Here is a list of all the endpoints and their respective methods. You can access
 
 ## Examples
 
-POST /renda360/register
-
+<details> <summary><strong>Register a user (Renda360)</strong></summary>
+POST `/renda360/register`
+```json
 {
   "name": "Jane Doe",
   "email": "jane@example.com",
   "password": "securePassword123"
 }
+```
 
 </details> <details> <summary><strong>Register a user (Scale)</strong></summary>
 
-POST /scale/register
-
+POST `/scale/register`
+```json
 {
   "name": "John Smith",
   "email": "john@example.com",
   "password": "anotherSecurePassword"
 }
-
+```
 </details> <details> <summary><strong>Register a user (Horizon)</strong></summary>
 
-POST /horizon/register
-
+POST `/horizon/register`
+```json
 {
   "name": "Alice Johnson",
   "email": "alice@example.com",
   "password": "MySafePass456"
 }
-
+```
 </details> <details> <summary><strong>Login</strong></summary>
 
-POST /login
-
+POST `/login`
+```json
 {
   "email": "jane@example.com",
   "password": "securePassword123"
 }
-
+```
 ✅ Response:
-
+```json
 {
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
-
+```
 </details> <details> <summary><strong>Get User Info</strong></summary>
 
-GET /me
+GET `/me`
 
 Headers:
 
@@ -127,7 +129,7 @@ Authorization: Bearer <JWT_TOKEN>
 
 </details> <details> <summary><strong>Product Dashboard</strong></summary>
 
-GET /dashboard/renda360 (or scale, horizon)
+GET `/dashboard/renda360` (or scale, horizon)
 
 Headers:
 
@@ -135,18 +137,18 @@ Authorization: Bearer <JWT_TOKEN>
 
 </details> <details> <summary><strong>Update User Privilege</strong></summary>
 
-POST /admin/update-privilege
+POST `/admin/update-privilege`
 
 Headers:
 
 Authorization: Bearer <JWT_TOKEN>
 
 Body:
-
+```json
 {
   "email": "user@example.com",
   "product": "scale",
   "role": "Admin"
 }
-
+```
 </details>
