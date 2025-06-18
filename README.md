@@ -63,9 +63,9 @@ Here is a list of all the endpoints and their respective methods. You can access
 
 | Endpoint | Method | Parameters | Description |
 | :------: | :----: | :--------- | :---------- |
-| /v1/renda360/register |	POST | name, email, password | Register a user for Renda360 (User becomes a Viewer on other products) |
-| /v1/scale/register | POST | name, email, password | Register a user for Scale (User becomes a Viewer on other products) |
-| /v1/horizon/register | POST | name, email, password | Register a user for Horizon (User becomes a Viewer on other products) |
+| /v1/register/renda360 |	POST | name, email, password | Register a user for Renda360 (User becomes a Viewer on other products) |
+| /v1/register/scale | POST | name, email, password | Register a user for Scale (User becomes a Viewer on other products) |
+| /v1/register/horizon | POST | name, email, password | Register a user for Horizon (User becomes a Viewer on other products) |
 | /v1/login | POST | email, password | Authenticates a user and returns a JWT token |
 | /v1/me |	GET | JWT token (header) | Returns user info and product access details |
 | /v1/dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
@@ -76,7 +76,7 @@ Here is a list of all the endpoints and their respective methods. You can access
 
 <details> <summary><strong>Register a user (Renda360)</strong></summary>
 
-POST `/v1/renda360/register`
+POST `/v1/register/renda360`
 
 ```json
 {
@@ -88,7 +88,7 @@ POST `/v1/renda360/register`
 
 </details> <details> <summary><strong>Register a user (Scale)</strong></summary>
 
-POST `/v1/scale/register`
+POST `/v1/register/scale`
 
 ```json
 {
@@ -99,7 +99,7 @@ POST `/v1/scale/register`
 ```
 </details> <details> <summary><strong>Register a user (Horizon)</strong></summary>
 
-POST `/v1/horizon/register`
+POST `/v1/register/horizon`
 ```json
 {
   "name": "Alice Johnson",
