@@ -69,7 +69,7 @@ Here is a list of all the endpoints and their respective methods. You can access
 | /v1/login | POST | email, password | Authenticates a user and returns a JWT token |
 | /v1/me |	GET | JWT token (header) | Returns user info and product access details |
 | /v1/dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
-| /v1/admin/update-privilege | POST | email, product, role, JWT token | Superadmin or product admin updates a user's role for a product |
+| /v1/admin/update-privilege | PATCH | email, product, role, JWT token | Superadmin or product admin updates a user's role for a product |
 
 
 ## Examples
@@ -140,7 +140,7 @@ Headers:
 
 </details> <details> <summary><strong>Update User Privilege</strong></summary>
 
-PUT `/v1/admin/update-privilege`
+PATCH `/v1/admin/update-privilege`
 
 Headers:
 
