@@ -15,12 +15,12 @@ func main() {
 	controllers.InitUserCollection()
 
 	r := mux.NewRouter()
-	r.HandleFunc("/me", controllers.Me).Methods("GET")
-	r.HandleFunc("/renda360/register", controllers.RegisterRenda360).Methods("POST")
-	r.HandleFunc("/scale/register", controllers.RegisterScale).Methods("POST")
-	r.HandleFunc("/horizon/register", controllers.RegisterHorizon).Methods("POST")
-	r.HandleFunc("/login", controllers.Login).Methods("POST")
-	r.HandleFunc("/admin/update-privilege", controllers.UpdateUserPrivilege).Methods("POST")
+	r.HandleFunc("/v1/me", controllers.Me).Methods("GET")
+	r.HandleFunc("/v1/renda360/register", controllers.RegisterRenda360).Methods("POST")
+	r.HandleFunc("/v1/scale/register", controllers.RegisterScale).Methods("POST")
+	r.HandleFunc("/v1/horizon/register", controllers.RegisterHorizon).Methods("POST")
+	r.HandleFunc("/v1/login", controllers.Login).Methods("POST")
+	r.HandleFunc("/v1/admin/update-privilege", controllers.UpdateUserPrivilege).Methods("PUT")
 	r.Handle("/dashboard/{product}", middleware.AdminOrUserForProduct(controllers.UserCollection)(http.HandlerFunc(controllers.ProductDashboard))).Methods("GET")
 
 	log.Println("Server running on :8080")

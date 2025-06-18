@@ -140,7 +140,7 @@ Headers:
 
 </details> <details> <summary><strong>Update User Privilege</strong></summary>
 
-POST `/admin/update-privilege`
+PUT `/admin/update-privilege`
 
 Headers:
 
