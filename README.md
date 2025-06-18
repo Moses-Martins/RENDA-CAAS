@@ -7,6 +7,7 @@
 - [Usage](#usage)
 - [Environment Variables](#environment-variables)
 - [Endpoints](#endpoints)
+- [Examples](#examples)
 - [Structure](Structure.md)
 - [License](LICENSE)
 ## Getting Started
@@ -69,3 +70,83 @@ Here is a list of all the endpoints and their respective methods. You can access
 | /me |	GET | JWT token (header) | Returns user info and product access details |
 | /dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
 | /admin/update-privilege | POST | email, product, role, JWT token | Superadmin or product admin updates a user's role for a product |
+
+
+## Examples
+
+POST /renda360/register
+
+{
+  "name": "Jane Doe",
+  "email": "jane@example.com",
+  "password": "securePassword123"
+}
+
+</details> <details> <summary><strong>Register a user (Scale)</strong></summary>
+
+POST /scale/register
+
+{
+  "name": "John Smith",
+  "email": "john@example.com",
+  "password": "anotherSecurePassword"
+}
+
+</details> <details> <summary><strong>Register a user (Horizon)</strong></summary>
+
+POST /horizon/register
+
+{
+  "name": "Alice Johnson",
+  "email": "alice@example.com",
+  "password": "MySafePass456"
+}
+
+</details> <details> <summary><strong>Login</strong></summary>
+
+POST /login
+
+{
+  "email": "jane@example.com",
+  "password": "securePassword123"
+}
+
+✅ Response:
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+
+</details> <details> <summary><strong>Get User Info</strong></summary>
+
+GET /me
+
+Headers:
+
+Authorization: Bearer <JWT_TOKEN>
+
+</details> <details> <summary><strong>Product Dashboard</strong></summary>
+
+GET /dashboard/renda360 (or scale, horizon)
+
+Headers:
+
+Authorization: Bearer <JWT_TOKEN>
+
+</details> <details> <summary><strong>Update User Privilege</strong></summary>
+
+POST /admin/update-privilege
+
+Headers:
+
+Authorization: Bearer <JWT_TOKEN>
+
+Body:
+
+{
+  "email": "user@example.com",
+  "product": "scale",
+  "role": "Admin"
+}
+
+</details>
