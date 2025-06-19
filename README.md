@@ -52,7 +52,7 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
 
 ## Environment Variables
 
-- `MONGO_URI`: The URI for connecting to the MongoDB database.
+- `MONGO_URI`: The URI for connecting to the MongoDB database. (Make sure your username and database password is in the link.)
 - `PORT`: The port on which the server will run.
 
 
