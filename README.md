@@ -154,7 +154,8 @@ Body:
   "role": "Admin"
 }
 ```
-Only users with the **Superadmin** role can assign or remove the ***Admin*** role for any product.Product admins can only promote or demote users to ***User*** or ***Viewer*** roles within their own product, but cannot assign or remove the *Admin* role for any user.
+Only users with the **Superadmin** role can assign or remove the ***Admin*** role for any product.
+Product admins can only promote or demote users to ***User*** or ***Viewer*** roles within their own product, but cannot assign or remove the *Admin* role for any user.
 
 </details>
 
