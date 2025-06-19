@@ -150,7 +150,7 @@ Body:
 ```json
 {
   "email": "user@example.com",
-  "product": "scale",
+  "product": "Scale",
   "role": "Admin"
 }
 ```

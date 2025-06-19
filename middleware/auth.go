@@ -14,7 +14,7 @@ import (
 )
 
 var validProducts = map[string]string{
-	"renda360": "renda360",
+	"renda360": "Renda360",
 	"scale":    "Scale",
 	"horizon":  "Horizon",
 }

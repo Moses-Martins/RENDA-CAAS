@@ -38,7 +38,7 @@ func registerForProduct(w http.ResponseWriter, r *http.Request, mainProduct stri
 	input.Password = string(hashedPassword)
 
 	// Assign roles: mainProduct gets "User", others get "Viewer"
-	allProducts := []string{"renda360", "Scale", "Horizon"}
+	allProducts := []string{"Renda360", "Scale", "Horizon"}
 	input.ProductRoles = make(map[string]string)
 	for _, product := range allProducts {
 		if product == mainProduct {
@@ -226,13 +226,15 @@ func getUserFromToken(r *http.Request) (*models.User, error) {
 
 // RegisterRenda360 handles registration for Renda360 product.
 func RegisterRenda360(w http.ResponseWriter, r *http.Request) {
-	registerForProduct(w, r, "renda360")
+	registerForProduct(w, r, "Renda360")
 }
 
+// RegisterScale handles registration for Scale product.
 func RegisterScale(w http.ResponseWriter, r *http.Request) {
 	registerForProduct(w, r, "Scale")
 }
 
+// RegisterHorizon handles registration for Horizon product.
 func RegisterHorizon(w http.ResponseWriter, r *http.Request) {
 	registerForProduct(w, r, "Horizon")
 }
