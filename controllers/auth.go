@@ -9,6 +9,7 @@ import (
 
 	"RENDA-CAAS/config"
 	"RENDA-CAAS/models"
+	"RENDA-CAAS/utils"
 
 	"errors"
 	"strings"
@@ -47,6 +48,23 @@ func registerForProduct(w http.ResponseWriter, r *http.Request, mainProduct stri
 		return
 	}
 
+	// Check if user exists
+	count, _ := UserCollection.CountDocuments(context.TODO(), bson.M{"email": input.Email})
+	if count > 0 {
+		http.Error(w, "User already exists", http.StatusBadRequest)
+		return
+	}
+
+	if err := utils.ValidatePassword(input.Password); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	if input.Password != input.ConfirmPassword {
+		http.Error(w, "Passwords do not match", http.StatusBadRequest)
+		return
+	}
+
 	// Hash password
 	hashedPassword, _ := bcrypt.GenerateFromPassword([]byte(input.Password), 14)
 	input.Password = string(hashedPassword)
@@ -60,13 +78,6 @@ func registerForProduct(w http.ResponseWriter, r *http.Request, mainProduct stri
 		} else {
 			input.ProductRoles[product] = "Viewer"
 		}
-	}
-
-	// Check if user exists
-	count, _ := UserCollection.CountDocuments(context.TODO(), bson.M{"email": input.Email})
-	if count > 0 {
-		http.Error(w, "User already exists", http.StatusBadRequest)
-		return
 	}
 
 	_, err := UserCollection.InsertOne(context.TODO(), input)

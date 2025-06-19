@@ -63,9 +63,9 @@ Here is a list of all the endpoints and their respective methods. You can access
 
 | Endpoint | Method | Parameters | Description |
 | :------: | :----: | :--------- | :---------- |
-| /v1/register/renda360 |	POST | name, email, password | Register a user for Renda360 (User becomes a Viewer on other products) |
-| /v1/register/scale | POST | name, email, password | Register a user for Scale (User becomes a Viewer on other products) |
-| /v1/register/horizon | POST | name, email, password | Register a user for Horizon (User becomes a Viewer on other products) |
+| /v1/register/renda360 |	POST | name, email, password, confirm password | Register a user for Renda360 (User becomes a Viewer on other products) |
+| /v1/register/scale | POST | name, email, password, confirm password | Register a user for Scale (User becomes a Viewer on other products) |
+| /v1/register/horizon | POST | name, email, password, confirm password | Register a user for Horizon (User becomes a Viewer on other products) |
 | /v1/login | POST | email, password | Authenticates a user and returns a JWT token |
 | /v1/me |	GET | JWT token (header) | Returns user info and product access details |
 | /v1/dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
@@ -82,7 +82,8 @@ POST `/v1/register/renda360`
 {
   "name": "Jane Doe",
   "email": "jane@example.com",
-  "password": "securePassword123"
+  "password": "securePassword123",
+  "confirmPassword": "securePassword123"
 }
 ```
 
@@ -94,7 +95,8 @@ POST `/v1/register/scale`
 {
   "name": "John Smith",
   "email": "john@example.com",
-  "password": "anotherSecurePassword"
+  "password": "anotherSecurePassword",
+  "confirmPassword": "anotherSecurePassword"
 }
 ```
 </details> <details> <summary><strong>Register a user (Horizon)</strong></summary>
@@ -104,7 +106,8 @@ POST `/v1/register/horizon`
 {
   "name": "Alice Johnson",
   "email": "alice@example.com",
-  "password": "MySafePass456"
+  "password": "MySafePass456",
+  "confirmPassword": "MySafePass456"
 }
 ```
 </details> <details> <summary><strong>Login</strong></summary>
