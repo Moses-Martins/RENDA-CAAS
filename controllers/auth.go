@@ -21,6 +21,20 @@ import (
 
 var UserCollection *mongo.Collection
 
+// Valid products and roles
+var validProducts = map[string]bool{
+	"Scale":    true,
+	"Horizon":  true,
+	"Renda360": true,
+}
+
+var validRoles = map[string]bool{
+	"Admin":  true,
+	"User":   true,
+	"Viewer": true,
+	"":       true, // Allow empty string for removal
+}
+
 func InitUserCollection() {
 	UserCollection = config.DB.Collection("users")
 }
@@ -112,6 +126,16 @@ func UpdateUserPrivilege(w http.ResponseWriter, r *http.Request) {
 	var req models.PrivilegeUpdateRequest
 	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	if !validProducts[req.Product] {
+		http.Error(w, "Invalid product name or casing. Use: Scale, Horizon, or Renda360.", http.StatusBadRequest)
+		return
+	}
+
+	if !validRoles[req.Role] {
+		http.Error(w, "Invalid role. Use: Admin, User, Viewer, or empty string to remove.", http.StatusBadRequest)
 		return
 	}
 
