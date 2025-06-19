@@ -31,7 +31,7 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
 3. Create a `.env` file in the root directory and add the following environment variables:
     ```properties
     # MongoDB Configuration
-    MONGODB_URI=mongodb+srv://..............
+    MONGO_URI=mongodb+srv://<UserName>:<db_password>@cluster0.gef1jsp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
     MONGO_DB=my_database
    
     # Server Configuration
@@ -52,7 +52,7 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
 
 ## Environment Variables
 
-- `MONGODB_URI`: The URI for connecting to the MongoDB database.
+- `MONGO_URI`: The URI for connecting to the MongoDB database.
 - `PORT`: The port on which the server will run.
 
 
