@@ -67,6 +67,7 @@ Here is a list of all the endpoints and their respective methods. You can access
 | /v1/register/scale | POST | name, email, password, confirm password | Register a user for Scale (User becomes a Viewer on other products) |
 | /v1/register/horizon | POST | name, email, password, confirm password | Register a user for Horizon (User becomes a Viewer on other products) |
 | /v1/login | POST | email, password | Authenticates a user and returns a JWT token |
+| /auth/google/login | GET | | Redirects user to Google for OAuth2 login. On success, creates or logs in the user and returns a JWT token |
 | /v1/me |	GET | JWT token (header) | Returns user info and product access details |
 | /v1/dashboard/{product} | GET | JWT token (header), product name | Product dashboard, only for Admin/User/SuperAdmin of the product |
 | /v1/admin/update-privilege | PATCH | email, product, role, JWT token | Superadmin or product admin updates a user's role for a product |
@@ -125,6 +126,23 @@ POST `/v1/login`
   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
 }
 ```
+
+</details> <details> <summary><strong>Login with Google</strong></summary>
+
+GET `/auth/google/login`
+
+**How to use:**
+1. Visit `/auth/google/login` in your browser.
+2. You will be redirected to Google to log in.
+3. After successful login, you will be redirected back and receive a JWT token in the response.
+
+✅ Example response:
+```json
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
 </details> <details> <summary><strong>Get User Info</strong></summary>
 
 GET `/v1/me`
