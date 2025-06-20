@@ -14,7 +14,7 @@
 This backend service is designed as a central authentication and authorization system for Renda’s products: Renda360, SCALE, and Project Horizon.
 All products share a single user database, but each product can be managed and accessed independently.
 
-### Registration & Login
+### Registration
 - Three separate registration endpoints (`/v1/register/renda360`, `/v1/register/scale`, `/v1/register/horizon`) allow each product to have its own onboarding flow.
 This was built under the assumption that each product could operate as a standalone service, but all user data is unified in one MongoDB database.
 
@@ -30,8 +30,11 @@ Each user has a productRoles map, e.g.:
   "Horizon": "Viewer"
 }
 ```
-- By default, registering through a product makes the user a `"User"` for that product and a `"Viewer"` for the others.
 - Roles supported: `Superadmin`, `Admin`, `User`, `Viewer`.
+
+### Login with Email/Password
+- If the user registers through any product endpoint, they are created in the database and assigned the "User" role for that product and "Viewer" for the others.
+On login, the user’s existing roles are used and a JWT is issued.
 
 ### Login with Google
 - If the user is new, they are automatically created in the database and assigned the `"User"` role for all products (`Renda360`, `Scale`, and `Horizon`).
