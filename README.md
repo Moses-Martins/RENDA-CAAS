@@ -98,7 +98,6 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
     
     # JWT Secret Key
     JWT_SECRET=your_jwt_secret
-    ```
 
     # Google OAuth2 Configuration
     GOOGLE_CLIENT_ID=your_google_client_id
