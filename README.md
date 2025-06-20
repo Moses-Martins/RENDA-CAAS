@@ -1,8 +1,8 @@
 # Renda-CAAS 
-> A simple backend service in GO with MongoDB and JWT Auth
+> A simple backend service in Go with MongoDB, OAuth2 authentication, and role-based access control for multiple products.
 
 ## Table of Contents
-
+- [Project Overview](#project-overview)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Environment Variables](#environment-variables)
@@ -10,6 +10,44 @@
 - [Examples](#examples)
 - [Structure](Structure.md)
 - [License](LICENSE)
+## Project Overview
+This backend service is designed as a central authentication and authorization system for Renda’s products: Renda360, SCALE, and Project Horizon.
+All products share a single user database, but each product can be managed and accessed independently.
+
+### Registration & Login
+- Three separate registration endpoints (`/v1/register/renda360`, `/v1/register/scale`, `/v1/register/horizon`) allow each product to have its own onboarding flow.
+This was built under the assumption that each product could operate as a standalone service, but all user data is unified in one MongoDB database.
+
+- Regardless of which endpoint is used, a new user is created in the central database and assigned a role for each product.
+
+### Roles & Product Access
+- Role-based access control is enforced per product.
+Each user has a productRoles map, e.g.:
+```json
+{
+  "Renda360": "User",
+  "Scale": "Viewer",
+  "Horizon": "Viewer"
+}
+```
+- By default, registering through a product makes the user a `"User"` for that product and a `"Viewer"` for the others.
+- Roles supported: `Superadmin`, `Admin`, `User`, `Viewer`.
+
+### Login with Google
+- If the user is new, they are automatically created in the database and assigned the `"User"` role for all products (`Renda360`, `Scale`, and `Horizon`).
+- If the user already exists, their existing roles are used.
+
+### Admin Privileges
+
+- **Superadmin** can assign or remove the `"Admin"` role for any product and user.
+- Product Admins can promote/demote users to `"User"` or `"Viewer"` within their product, but cannot assign or remove "Admin" roles.
+- Only users with the correct privileges can update roles via the `/v1/admin/update-privilege` endpoint.
+
+### OAuth2 & JWT
+- Users can log in with email/password or Google OAuth2.
+- On login, a JWT is issued containing user info and their roles for each product.
+- All protected routes check the JWT for product-specific permissions.
+
 ## Getting Started
 
 ### Prerequisites
