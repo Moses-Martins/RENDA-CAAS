@@ -20,6 +20,14 @@ This was built under the assumption that each product could operate as a standal
 
 - Regardless of which endpoint is used, a new user is created in the central database and assigned a role for each product.
 
+### Login with Email/Password
+- If the user registers through any product endpoint, they are created in the database and assigned the `"User"` role for that product and `"Viewer"` for the others.
+On login, the user’s existing roles are used and a JWT is issued.
+
+### Login with Google
+- If the user is new, they are automatically created in the database and assigned the `"User"` role for all products (`Renda360`, `Scale`, and `Horizon`).
+- If the user already exists, their existing roles are used.
+
 ### Roles & Product Access
 - Role-based access control is enforced per product.
 Each user has a productRoles map, e.g.:
@@ -32,19 +40,29 @@ Each user has a productRoles map, e.g.:
 ```
 - Roles supported: `Superadmin`, `Admin`, `User`, `Viewer`.
 
-### Login with Email/Password
-- If the user registers through any product endpoint, they are created in the database and assigned the "User" role for that product and "Viewer" for the others.
-On login, the user’s existing roles are used and a JWT is issued.
+### Role Permissions
 
-### Login with Google
-- If the user is new, they are automatically created in the database and assigned the `"User"` role for all products (`Renda360`, `Scale`, and `Horizon`).
-- If the user already exists, their existing roles are used.
+- **Superadmin:**  
+  - Can access all endpoints, including admin-only routes.
+  - Can assign or remove the `"Admin"` role for any user and product.
+  - Can update any user's role for any product, including removing all access. Which means the user has no access to that product at all.
 
-### Admin Privileges
+- **Admin:**  
+  - Can access product dashboards for their product.
+  - Can promote/demote users to `"User"`, `"Viewer"`, or remove access completely within their product.
+  - Cannot assign or remove `"Admin"` roles.
 
-- **Superadmin** can assign or remove the `"Admin"` role for any product and user.
-- Product Admins can promote/demote users to `"User"` or `"Viewer"` within their product, but cannot assign or remove "Admin" roles.
-- Only users with the correct privileges can update roles via the `/v1/admin/update-privilege` endpoint.
+- **User:**  
+  - Can access the `/v1/dashboard/{product}` endpoint for products where they have the `"User"` role.
+  - Can view their own info via `/v1/me`.
+
+- **Viewer:**  
+  - Can only view their own info via `/v1/me`.
+  - Cannot access product dashboards or admin endpoints.
+
+**Note:**  
+- Only users with `"User"`, `"Admin"`, or `"Superadmin"` roles for a product can access `/v1/dashboard/{product}` for that product.
+- Only `"Superadmin"` and product `"Admin"` roles can update privileges via `/v1/admin/update-privilege`.
 
 ### OAuth2 & JWT
 - Users can log in with email/password or Google OAuth2.
