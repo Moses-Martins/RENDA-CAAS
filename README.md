@@ -99,7 +99,19 @@ Make sure you have GO (>= 1.24.3) installed on your machine.
     # JWT Secret Key
     JWT_SECRET=your_jwt_secret
     ```
+
+    # Google OAuth2 Configuration
+    GOOGLE_CLIENT_ID=your_google_client_id
+    GOOGLE_CLIENT_SECRET=your_google_client_secret
+    GOOGLE_REDIRECT_URL=http://localhost:8080/auth/google/callback
+    ```
+
+    > **Note:**  
+    > - To use Google login, you must [register your app with Google](https://console.developers.google.com/) and obtain a Client ID and Client Secret.  
+    > - Set the redirect URL in the Google console to match `GOOGLE_REDIRECT_URL` above.
+
     Start MongoDB: Make sure you have access to a MongoDB instance (local or Atlas).
+    
    
 ## Usage
 
