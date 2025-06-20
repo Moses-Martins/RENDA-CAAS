@@ -16,6 +16,8 @@ func main() {
 
 	r := mux.NewRouter()
 	r.HandleFunc("/v1/me", controllers.Me).Methods("GET")
+	r.HandleFunc("/auth/google/login", controllers.GoogleLogin).Methods("GET")
+	r.HandleFunc("/auth/google/callback", controllers.GoogleCallback).Methods("GET")
 	r.HandleFunc("/v1/register/renda360", controllers.RegisterRenda360).Methods("POST")
 	r.HandleFunc("/v1/register/scale", controllers.RegisterScale).Methods("POST")
 	r.HandleFunc("/v1/register/horizon", controllers.RegisterHorizon).Methods("POST")
